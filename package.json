@@ -1,0 +1,8 @@
+{
+  "name": "@sunray/coding-standard",
+  "version": "1.0.0",
+  "description": "Sunray Coding Standards",
+  "main": "index.js",
+  "repository": "git@github.com:sunray/coding-standard.git",
+  "author": "Sunray"
+}
