@@ -1,6 +1,6 @@
 {
     "name": "sunray/coding-standard",
-    "description": "Sunray Coding Standard",
+    "description": "The Sunray development coding standard",
     "license": "MIT",
     "minimum-stability": "dev",
     "prefer-stable": true,
