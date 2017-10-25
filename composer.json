@@ -2,9 +2,7 @@
     "name": "sunray/coding-standard",
     "description": "Sunray Coding Standard",
     "require": {
-        "php": ">=7.1"
-    },
-    "require-dev": {
+        "php": ">=7.1",
         "slevomat/coding-standard": "~4.0",
         "squizlabs/php_codesniffer": "^3.0"
     }
