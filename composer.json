@@ -1,6 +1,9 @@
 {
     "name": "sunray/coding-standard",
     "description": "Sunray Coding Standard",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
         "php": ">=7.1",
         "slevomat/coding-standard": "~4.0",
