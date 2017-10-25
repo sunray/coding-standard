@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "859320a5eb331a1b9fb9d6388bb379b2",
+    "content-hash": "5124712d664c0e233250f2f64eb4d0e4",
     "packages": [
         {
             "name": "slevomat/coding-standard",
@@ -97,9 +97,9 @@
     ],
     "packages-dev": [],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": [],
-    "prefer-stable": false,
+    "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": ">=7.1"
