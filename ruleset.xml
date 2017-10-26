@@ -123,6 +123,16 @@
     <!-- Checks for usage of $this in static methods, which will cause runtime errors. -->
     <rule ref="Squiz.Scope.StaticThisUsage" />
 
+    <!-- Makes sure there are no spaces around the concatenation operator. Ignore multiline
+         concatenations without any specific requirement on this sniff in terms of concatenation
+         operator location. This allows for other sniffs to handle multiline padding -->
+    <rule ref="Squiz.Strings.ConcatenationSpacing">
+        <properties>
+            <property name="spacing" value="1" />
+            <property name="ignoreNewlines" value="true" />
+        </properties>
+    </rule>
+
     <!-- Makes sure that any use of double quotes strings are warranted. -->
     <rule ref="Squiz.Strings.DoubleQuoteUsage" />
 

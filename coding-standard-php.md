@@ -23,7 +23,8 @@ $string = 'Hello ' . $name;
 
 #### Scalar type hints
 
-Scalar values should use short/abbreviated form in all function type hints and annotations.
+Scalar values should use short/abbreviated form in all applicable locations including
+function parameter type hints, function return types, and annotations.
 
 ```php
 // bad
