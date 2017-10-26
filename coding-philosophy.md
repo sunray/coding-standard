@@ -7,8 +7,8 @@ readable, debuggable, and maintainable code.
 
   1. [Consistency](#consistency)
   1. [Strict and Predictable Code](#strict-and-predictable-code)
-  1. [Minimize Impact of Changes](#minimize-impact-of-changes)
-  1. [Optimize for Readability](#optimize-for-readibility)
+  1. [Minimize The Impact of Change](#minimize-the-impact-of-change)
+  1. [Optimize for Readability](#optimize-for-readability)
   1. [Optimize for Code Completion](#optimize-for-code-completion)
   
 ## Consistency

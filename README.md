@@ -8,8 +8,8 @@ aims to create an efficient development workflow resulting from readable, debugg
 maintainable code. The general principles are:
 * [Consistency](coding-philosophy.md#consistency)
 * [Strict and Predictable Code](coding-philosophy.md#strict-and-predictable-code)
-* [Minimize Impact of Changes](coding-philosophy.md#minimize-impact-of-changes)
-* [Optimize for Readability](coding-philosophy.md#optimize-for-readibility)
+* [Minimize The Impact of Change](coding-philosophy.md#minimize-the-impact-of-change)
+* [Optimize for Readability](coding-philosophy.md#optimize-for-readability)
 * [Optimize for Code Completion](coding-philosophy.md#optimize-for-code-completion)
 
 
