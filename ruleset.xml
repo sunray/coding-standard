@@ -3,6 +3,9 @@
 <ruleset name="Sunray">
     <description>Sunray PHP Coding Standards</description>
 
+    <!-- Include the Slevomat coding standard path -->
+    <config name="installed_paths" value="../../slevomat/coding-standard"/>
+
     <!-- Include the whole PSR-2 standard: http://www.php-fig.org/psr/psr-2/ -->
     <!-- Referenced Sniffs: https://github.com/squizlabs/PHP_CodeSniffer/blob/master/src/Standards/PSR2/ruleset.xml -->
     <rule ref="PSR2" />
@@ -24,8 +27,7 @@
     <rule ref="Generic.CodeAnalysis.AssignmentInCondition"/>
 
     <!-- Detects empty statements. We ONLY allow empty try/catch statements which can exist with a
-         comment as enforced by the "Squiz.Commenting.EmptyCatchComment.*" sniffs. All other statements
-    -->
+         comment as enforced by the "Squiz.Commenting.EmptyCatchComment.*" sniffs. All other statements -->
     <rule ref="Generic.CodeAnalysis.EmptyStatement">
         <!--
         Allow only the CATCH statement to be empty WITH comments. All other statements
@@ -222,25 +224,106 @@
     ####################################################################################################################
     ### Slevomat
     ###
-    ### Reference: https://github.com/slevomat/coding-standard
+    ### Reference: https://github.com/slevomat/coding-standard/tree/master/SlevomatCodingStandard/Sniffs
     ####################################################################################################################
     -->
 
-    <rule ref="vendor/slevomat/coding-standard/SlevomatCodingStandard/ruleset.xml">
-        <!-- No need to use Yoda comparisons. Honestly more confusing -->
-        <exclude name="SlevomatCodingStandard.ControlStructures.RequireYodaComparison" />
+    <!-- Ensure commas after last element in an array make adding a new element easier and result in a cleaner
+         versioning diff. This sniff enforces trailing commas in multi-line arrays and requires short array
+         syntax []. -->
+    <rule ref="SlevomatCodingStandard.Arrays.TrailingArrayComma" />
 
-        <!-- Using custom loaders (even PSR-4) there exist non exact file/path structure. Allow applications
-             to have flexibility in defining these custom paths. -->
-        <exclude name="SlevomatCodingStandard.Files.TypeNameMatchesFileName.NoMatchBetweenTypeNameAndFileName" />
+    <!-- In PHP 7.1 it's possible to declare visibility of class constants. In a similar vein to optional declaration
+         of visibility for properties and methods which is actually required in sane coding standards, this sniff
+         also requires declaring visibility for all class constants. -->
+    <rule ref="SlevomatCodingStandard.Classes.ClassConstantVisibility" />
 
-        <!-- Allow all namespaces -->
-        <exclude name="SlevomatCodingStandard.Namespaces.UseOnlyWhitelistedNamespaces" />
+    <!-- Finds potential dead code -->
+    <rule ref="SlevomatCodingStandard.Classes.UnusedPrivateElements" />
 
+    <!-- Reports forbidden annotations.
+        @author, @created, @version - we have version control systems
+        @package - we have namespaces
+        @copyright, @license - it's not necessary to repeat licensing information in each file
+        @throws - it's not possible to enforce this annotation and the information can become outdated
+    -->
+    <rule ref="SlevomatCodingStandard.Commenting.ForbiddenAnnotations">
         <properties>
-            <!-- Ensure PSR-2 compliance -->
-            <property name="linesCountAfterOpeningBrace" value="0" />
-            <property name="linesCountBeforeClosingBrace" value="0" />
+            <property name="forbiddenAnnotations" type="array" value="author,created,version,package,copyright,license"/>
+        </properties>
+    </rule>
+
+    <!-- Reports invalid format of inline phpDocs with @var. -->
+    <rule ref="SlevomatCodingStandard.Commenting.InlineDocCommentDeclaration" />
+
+    <!-- Yoda conditions decrease code comprehensibility and readability by switching operands around comparison
+         operators forcing the reader to read the code in an unnatural way. -->
+    <rule ref="SlevomatCodingStandard.ControlStructures.DisallowYodaComparison" />
+
+    <!-- In PHP 7.0, a Throwable interface was added that allows catching and handling errors in more cases than
+         Exception previously allowed. So, if the catch statement contained Exception on PHP 5.x, it means it should
+         probably be rewritten to reference Throwable on PHP 7.x. This sniff enforces that. -->
+    <rule ref="SlevomatCodingStandard.Exceptions.ReferenceThrowableOnly" />
+
+    <!-- Checks whether uses at the top of a file are alphabetically sorted. Follows natural sorting and takes
+         edge cases with special symbols into consideration. -->
+    <rule ref="SlevomatCodingStandard.Namespaces.AlphabeticallySortedUses" />
+
+    <!-- Group use declarations are ugly, make diffs ugly and this sniff prohibits them. -->
+    <rule ref="SlevomatCodingStandard.Namespaces.DisallowGroupUse" />
+
+    <!-- Prohibits multiple uses separated by commas. i.e. use Foo, Bar; -->
+    <rule ref="SlevomatCodingStandard.Namespaces.MultipleUsesPerLine" />
+
+    <!-- Prohibits unused imports from other namespaces. -->
+    <rule ref="SlevomatCodingStandard.Namespaces.UnusedUses" />
+
+    <!-- Disallows leading backslash in use statement: e.g. use \Foo\Bar;  -->
+    <rule ref="SlevomatCodingStandard.Namespaces.UseDoesNotStartWithBackslash" />
+
+    <!-- Prohibits uses from the same namespace -->
+    <rule ref="SlevomatCodingStandard.Namespaces.UseFromSameNamespace" />
+
+    <!-- Enforces having declare(strict_types = 1) at the top of each PHP file. -->
+    <rule ref="SlevomatCodingStandard.TypeHints.DeclareStrictTypes">
+        <properties>
+            <property name="newlinesCountBetweenOpenTagAndDeclare" value="1" />
+            <property name="spacesCountAroundEqualsSign" value="1" />
+        </properties>
+    </rule>
+
+    <!-- Enforces using shorthand scalar typehint variants in phpDocs: int instead of
+         integer and bool instead of boolean. This is for consistency with native scalar typehints
+         which also allow shorthand variants only. Note that this check is specific to docblock
+         or annotations only (and not PHP type hints). -->
+    <rule ref="SlevomatCodingStandard.TypeHints.LongTypeHints" />
+
+    <!-- Checks whether the nullablity ? symbol is present before each nullable and optional parameter
+         (which are marked as = null):
+        <code>
+            function foo(
+                int $foo = null, // ? missing
+                ?int $bar = null // correct
+            ) {}
+        </code>
+    -->
+    <rule ref="SlevomatCodingStandard.TypeHints.NullableTypeForNullDefaultValue" />
+
+    <!--
+        1. Checks that there's a single space between a typehint and a parameter name: Foo $foo
+        2. Checks that there's no whitespace between a nullability symbol and a typehint: ?Foo
+    -->
+    <rule ref="SlevomatCodingStandard.TypeHints.ParameterTypeHintSpacing" />
+
+    <!-- Enforces consistent formatting of return typehints: e.g. function foo(): ?int -->
+    <rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHintSpacing" />
+
+    <!-- Enforces one configurable number of lines after opening class/interface/trait brace and one empty
+         line before the closing brace. Similar to the other Squiz.Whitespace with a few additional checks -->
+    <rule ref="SlevomatCodingStandard.Types.EmptyLinesAroundTypeBraces">
+        <properties>
+            <property name="linesCountAfterOpeningBrace" value="0"/>
+            <property name="linesCountBeforeClosingBrace" value="0"/>
         </properties>
     </rule>
 
