@@ -20,6 +20,9 @@
     <!-- Requires short array syntax, i.e. [] instead of array() -->
     <rule ref="Generic.Arrays.DisallowLongArraySyntax" />
 
+    <!-- Prevent variable assignments being made within conditions. i.e. while(($i = $i - 1)) -->
+    <rule ref="Generic.CodeAnalysis.AssignmentInCondition"/>
+
     <!-- Detects empty statements. We ONLY allow empty try/catch statements which can exist with a
          comment as enforced by the "Squiz.Commenting.EmptyCatchComment.*" sniffs. All other statements
     -->
