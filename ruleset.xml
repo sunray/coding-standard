@@ -220,12 +220,12 @@
         <!-- No need to use Yoda comparisons. Honestly more confusing -->
         <exclude name="SlevomatCodingStandard.ControlStructures.RequireYodaComparison" />
 
-        <!-- Allow all namespaces -->
-        <exclude name="SlevomatCodingStandard.Namespaces.UseOnlyWhitelistedNamespaces" />
-
         <!-- Using custom loaders (even PSR-4) there exist non exact file/path structure. Allow applications
              to have flexibility in defining these custom paths. -->
         <exclude name="SlevomatCodingStandard.Files.TypeNameMatchesFileName.NoMatchBetweenTypeNameAndFileName" />
+
+        <!-- Allow all namespaces -->
+        <exclude name="SlevomatCodingStandard.Namespaces.UseOnlyWhitelistedNamespaces" />
 
         <properties>
             <!-- Ensure PSR-2 compliance -->
