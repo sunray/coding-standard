@@ -275,6 +275,9 @@
     <!-- Prohibits multiple uses separated by commas. i.e. use Foo, Bar; -->
     <rule ref="SlevomatCodingStandard.Namespaces.MultipleUsesPerLine" />
 
+    <!-- Enforces to use all referenced names with configurable omissions -->
+    <rule ref="SlevomatCodingStandard.Namespaces.ReferenceUsedNamesOnly" />
+
     <!-- Prohibits unused imports from other namespaces. -->
     <rule ref="SlevomatCodingStandard.Namespaces.UnusedUses" />
 
