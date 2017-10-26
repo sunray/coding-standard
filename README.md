@@ -16,7 +16,7 @@ maintainable code. The general principles are:
 ## PHP
 
 > **The PHP specific coding standards are outlined in a 
-> [separate document](coding-standard.md).**
+> [separate document](coding-standard-php.md).**
 
 #### Requirements
 * PHP 7.1+
