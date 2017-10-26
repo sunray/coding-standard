@@ -40,7 +40,6 @@ About the names of identifiers like classes, functions, methods, variables:
 
 * A name SHOULD be descriptive, distinctive, precise and readable.
 * A name SHOULD NOT be abbreviated.
-* A name SHOULD NOT be pre- or postfixed with Interface, Trait or Abstract.
 
 A long name is not a problem, since our IDE has auto completion.
 
