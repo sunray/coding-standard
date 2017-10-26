@@ -5,12 +5,11 @@ readable, debuggable, and maintainable code.
 
 ## Table of Contents
 
-  1. [Consistency](#Consistency)
-  1. [Strict and Predictable Code](#Strict and Predictable Code)
-  1. [Minimize the Impact of Change](#Minimize the impact of change)
-  1. [Optimize for Readability](#Optimize for Readability)
-  1. [Optimize for Code Completion](#Optimize for Code Completion)
-  1.
+  1. [Consistency](#consistency)
+  1. [Strict and Predictable Code](#strict-and-predictable-code)
+  1. [Minimize Impact of Changes](#minimize-impact-of-changes)
+  1. [Optimize for Readability](#optimize-for-readibility)
+  1. [Optimize for Code Completion](#optimize-for-code-completion)
   
 ## Consistency
 
