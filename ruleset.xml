@@ -4,6 +4,186 @@
     <description>Sunray PHP Coding Standards</description>
 
     <!-- Include the whole PSR-2 standard: http://www.php-fig.org/psr/psr-2/ -->
+    <!-- Referenced Sniffs: https://github.com/squizlabs/PHP_CodeSniffer/blob/master/src/Standards/PSR2/ruleset.xml -->
     <rule ref="PSR2" />
+
+
+    <!-- The following sniffs are those that DO NOT exist in the base PSR2 set of sniffs -->
+
+    <!--
+    ####################################################################################################################
+    ### Generic
+    ###
+    ### Reference: https://github.com/squizlabs/PHP_CodeSniffer/tree/master/src/Standards/Generic/Sniffs
+    ####################################################################################################################
+    -->
+
+    <!-- Requires short array syntax, i.e. [] instead of array() -->
+    <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
+
+    <!-- Forbid statements on the same line:
+        echo 'test'; echo 'test2';
+    -->
+    <rule ref="Generic.Formatting.DisallowMultipleStatements" />
+
+    <!-- Requires a space after typecasting, e.g. `(int) "4"` -->
+    <rule ref="Generic.Formatting.SpaceAfterCast"/>
+
+    <!-- Checks the nesting level for methods. Default warning level = 5 -->
+    <rule ref="Generic.Metrics.NestingLevel" />
+
+    <!-- Requires camel-caps naming for functions -->
+    <rule ref="Generic.NamingConventions.CamelCapsFunctionName">
+        <properties>
+            <!-- Allow things like `setDI()` where there are two capitals next to each other -->
+            <property name="strict" value="false"/>
+        </properties>
+    </rule>
+
+    <!-- Requires PHP5-style class constructors:
+        class MyClass {
+            public function MyClass()     // bad
+            public function __construct() // good
+        }
+    -->
+    <rule ref="Generic.NamingConventions.ConstructorName" />
+
+    <!-- Ensures that constant names are all uppercase. -->
+    <rule ref="Generic.NamingConventions.UpperCaseConstantName" />
+
+
+    <!-- Forbids pointless string concatenations, e.g. "foo"."bar" -->
+    <rule ref="Generic.Strings.UnnecessaryStringConcat">
+        <properties>
+            <!-- In order to adhere to line length limits there are cases where strings must be broken
+                 up across lines. This prevents this error from triggering. -->
+            <property name="allowMultiline" value="true" />
+        </properties>
+    </rule>
+
+
+    <!--
+    ####################################################################################################################
+    ### Squiz
+    ####################################################################################################################
+    -->
+
+    <!-- Tests that the stars in a doc comment align correctly. For example:
+        /**
+          *     // Invalid (One extra space)
+         */
+    -->
+    <rule ref="Squiz.Commenting.DocCommentAlignment" />
+
+    <!-- Checks for empty catch clause without a comment. -->
+    <rule ref="Squiz.Commenting.EmptyCatchComment" />
+
+    <!-- A Sniff to enforce the use of IDENTICAL type operators rather than EQUAL operators. -->
+    <rule ref="Squiz.Operators.ComparisonOperatorUsage">
+        <!-- Ensure we allow implicit TRUE operations. e.g. `if ($a)` -->
+        <exclude name="Squiz.Operators.ComparisonOperatorUsage.ImplicitTrue" />
+    </rule>
+
+    <!-- Verifies that class members have scope modifiers. -->
+    <rule ref="Squiz.Scope.MemberVarScope" />
+
+    <!-- Verifies that class methods have scope modifiers. -->
+    <rule ref="Squiz.Scope.MethodScope" />
+
+    <!-- Checks for usage of $this in static methods, which will cause runtime errors. -->
+    <rule ref="Squiz.Scope.StaticThisUsage" />
+
+    <!-- Makes sure that any use of double quotes strings are warranted. -->
+    <rule ref="Squiz.Strings.DoubleQuoteUsage" />
+
+    <!-- Forbids whitespace in typecasts:
+        (int) $stringInt;   // good
+        ( int ) $stringInt; // bad
+    -->
+    <rule ref="Squiz.WhiteSpace.CastSpacing" />
+
+    <!-- Checks that control structures have the correct spacing around brackets:
+        if ( false )    // good
+        if (false)      // bad
+    -->
+    <rule ref="Squiz.WhiteSpace.ControlStructureSpacing" />
+
+    <!-- Checks that there is no empty line after the opening brace of a function.
+        function testAction()
+        {                           // good
+        function testAction()
+        {                           // bad
+        function testAction() {     // bad
+    -->
+    <rule ref="Squiz.WhiteSpace.FunctionOpeningBraceSpace" />
+
+    <!-- Ensures all language constructs contain a single space between themselves and their content.:
+        echo 'test';    // good
+        echo'test';     // bad
+    -->
+    <rule ref="Squiz.WhiteSpace.LanguageConstructSpacing" />
+
+    <!-- Requires whitespace around logical operators:
+        if (this && that) // good
+        if (this&&that)   // bad
+    -->
+    <rule ref="Squiz.WhiteSpace.LogicalOperatorSpacing" />
+
+    <!-- Ensure there is no whitespace before/after an object operator. Allow multi-line object operators.
+        $test->a = '3';     // good
+        $test -> a = '3';   // bad
+    -->
+    <rule ref="Squiz.WhiteSpace.ObjectOperatorSpacing">
+        <properties>
+            <property name="ignoreNewlines" value="true" />
+        </properties>
+    </rule>
+
+    <!-- Verifies that operators have valid spacing surrounding them. Ensure that we allow additional space
+         when testing operators that encompass multiple lines:
+        $sz += '3';();      // good
+        $sz +='3';();       // bad
+    -->
+    <rule ref="Squiz.WhiteSpace.OperatorSpacing">
+        <properties>
+            <property name="ignoreNewlines" value="true" />
+        </properties>
+    </rule>
+
+    <!-- Ensures that a property or label colon has a single space after it and no space before it.
+        switch (true) {
+            case 1:         // good
+                break;
+            case 2 :        // bad
+                break;
+        }
+    -->
+    <rule ref="Squiz.WhiteSpace.PropertyLabelSpacing" />
+
+    <!-- Checks that the closing braces of scopes are aligned correctly. -->
+    <rule ref="Squiz.WhiteSpace.ScopeClosingBrace" />
+
+    <!-- Ensure there is a single space after scope keywords. -->
+    <rule ref="Squiz.WhiteSpace.ScopeKeywordSpacing" />
+
+    <!-- Forbids whitespace before semicolons:
+        doStuff();      // good
+        doStuff() ;     // bad
+    -->
+    <rule ref="Squiz.WhiteSpace.SemicolonSpacing" />
+
+    <!--
+    ####################################################################################################################
+    ### Zend
+    ####################################################################################################################
+    -->
+
+
+    <!--
+    ####################################################################################################################
+    ### Slevomat
+    ####################################################################################################################
+    -->
+
 
 </ruleset>

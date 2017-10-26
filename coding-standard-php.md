@@ -7,7 +7,7 @@ issued by the PHP Framework Interoperability Group:
 * [PSR-2: Coding Style Guide](http://www.php-fig.org/psr/psr-2/)
 * [PSR-12: Extended Coding Style Guide](https://github.com/php-fig/fig-standards/blob/master/proposed/extended-coding-style-guide.md) (draft)
 
-## Differences from PSR
+## Differences/Addendums from PSR
 
 #### Spaces around concatenation
 
