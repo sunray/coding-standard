@@ -92,7 +92,6 @@
         </properties>
     </rule>
 
-
     <!--
     ####################################################################################################################
     ### Squiz
@@ -209,11 +208,30 @@
     ####################################################################################################################
     -->
 
-
     <!--
     ####################################################################################################################
     ### Slevomat
+    ###
+    ### Reference: https://github.com/slevomat/coding-standard
     ####################################################################################################################
     -->
+
+    <rule ref="vendor/slevomat/coding-standard/SlevomatCodingStandard/ruleset.xml">
+        <!-- No need to use Yoda comparisons. Honestly more confusing -->
+        <exclude name="SlevomatCodingStandard.ControlStructures.RequireYodaComparison" />
+
+        <!-- Allow all namespaces -->
+        <exclude name="SlevomatCodingStandard.Namespaces.UseOnlyWhitelistedNamespaces" />
+
+        <!-- Using custom loaders (even PSR-4) there exist non exact file/path structure. Allow applications
+             to have flexibility in defining these custom paths. -->
+        <exclude name="SlevomatCodingStandard.Files.TypeNameMatchesFileName.NoMatchBetweenTypeNameAndFileName" />
+
+        <properties>
+            <!-- Ensure PSR-2 compliance -->
+            <property name="linesCountAfterOpeningBrace" value="0" />
+            <property name="linesCountBeforeClosingBrace" value="0" />
+        </properties>
+    </rule>
 
 </ruleset>

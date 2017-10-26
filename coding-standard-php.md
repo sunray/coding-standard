@@ -21,6 +21,18 @@ $string = 'Hello '.$name;
 $string = 'Hello ' . $name;
 ```
 
+#### Scalar type hints
+
+Scalar values should use short/abbreviated form in all function type hints and annotations.
+
+```php
+// bad
+private function (integer $timeout, string $phrase, boolean $enabled)
+
+// good
+private function (int $timeout, string $phrase, bool $enabled)
+```
+
 #### Naming
 
 About the names of identifiers like classes, functions, methods, variables:
