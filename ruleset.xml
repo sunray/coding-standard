@@ -7,7 +7,6 @@
     <!-- Referenced Sniffs: https://github.com/squizlabs/PHP_CodeSniffer/blob/master/src/Standards/PSR2/ruleset.xml -->
     <rule ref="PSR2" />
 
-
     <!-- The following sniffs are those that DO NOT exist in the base PSR2 set of sniffs -->
 
     <!--
@@ -19,7 +18,37 @@
     -->
 
     <!-- Requires short array syntax, i.e. [] instead of array() -->
-    <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
+    <rule ref="Generic.Arrays.DisallowLongArraySyntax" />
+
+    <!-- Detects empty statements. We ONLY allow empty try/catch statements which can exist with a
+         comment as enforced by the "Squiz.Commenting.EmptyCatchComment.*" sniffs. All other statements
+    -->
+    <rule ref="Generic.CodeAnalysis.EmptyStatement">
+        <!--
+        Allow only the CATCH statement to be empty WITH comments. All other statements
+        (DO, ELSE, ELSEIF, FOR, FOREACH, IF, SWITCH, TRY) are not allowed to be empty even
+        with a comment.
+        -->
+        <exclude name="Generic.CodeAnalysis.EmptyStatement.DetectedCATCH" />
+    </rule>
+
+    <!-- Detects the usage of one and the same incrementer into an outer and an inner
+         loop. Even it is intended this is confusing code. -->
+    <rule ref="Generic.CodeAnalysis.JumbledIncrementer" />
+
+    <!-- Detects unnecessary final modifiers inside of final classes.-->
+    <rule ref="Generic.CodeAnalysis.UnnecessaryFinalModifier" />
+
+    <!-- Detects unnecessary overriden methods that simply call their parent. e.g.
+        <code>
+            class Foo extends Bar {
+                public function __construct($a, $b) {
+                    parent::__construct($a, $b);
+                }
+            }
+        </code>
+    -->
+    <rule ref="Generic.CodeAnalysis.UselessOverridingMethod" />
 
     <!-- Forbid statements on the same line:
         echo 'test'; echo 'test2';
@@ -27,7 +56,7 @@
     <rule ref="Generic.Formatting.DisallowMultipleStatements" />
 
     <!-- Requires a space after typecasting, e.g. `(int) "4"` -->
-    <rule ref="Generic.Formatting.SpaceAfterCast"/>
+    <rule ref="Generic.Formatting.SpaceAfterCast" />
 
     <!-- Checks the nesting level for methods. Default warning level = 5 -->
     <rule ref="Generic.Metrics.NestingLevel" />
@@ -36,7 +65,7 @@
     <rule ref="Generic.NamingConventions.CamelCapsFunctionName">
         <properties>
             <!-- Allow things like `setDI()` where there are two capitals next to each other -->
-            <property name="strict" value="false"/>
+            <property name="strict" value="false" />
         </properties>
     </rule>
 
@@ -50,7 +79,6 @@
 
     <!-- Ensures that constant names are all uppercase. -->
     <rule ref="Generic.NamingConventions.UpperCaseConstantName" />
-
 
     <!-- Forbids pointless string concatenations, e.g. "foo"."bar" -->
     <rule ref="Generic.Strings.UnnecessaryStringConcat">
@@ -184,6 +212,5 @@
     ### Slevomat
     ####################################################################################################################
     -->
-
 
 </ruleset>
