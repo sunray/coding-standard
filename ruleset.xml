@@ -321,6 +321,9 @@
     <!-- Enforces consistent formatting of return typehints: e.g. function foo(): ?int -->
     <rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHintSpacing" />
 
+    <!-- Enforces consistent type hints -->
+    <rule ref="SlevomatCodingStandard.TypeHints.TypeHintDeclaration" />
+
     <!-- Enforces one configurable number of lines after opening class/interface/trait brace and one empty
          line before the closing brace. Similar to the other Squiz.Whitespace with a few additional checks -->
     <rule ref="SlevomatCodingStandard.Types.EmptyLinesAroundTypeBraces">
