@@ -1,5 +1,8 @@
 # Sunray Coding Standard
 
+[![Downloads](https://img.shields.io/packagist/dt/sunray/coding-standard.svg?style=flat-square)](https://packagist.org/packages/sunray/coding-standard)
+[![License](https://img.shields.io/github/license/sunray/coding-standard.svg?style=flat-square)](https://github.com/sunray/coding-standard/blob/master/LICENSE)
+
 A coding standard to use for common PHP and JavaScript modules.
 
 The main objectives of this standard are outlined in the 
