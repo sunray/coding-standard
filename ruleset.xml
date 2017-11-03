@@ -324,6 +324,7 @@
     <!-- Enforces consistent type hints -->
     <rule ref="SlevomatCodingStandard.TypeHints.TypeHintDeclaration">
         <exclude name="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingTraversableParameterTypeHintSpecification" />
+        <exclude name="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingTraversablePropertyTypeHintSpecification" />
         <exclude name="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingTraversableReturnTypeHintSpecification" />
     </rule>
 
