@@ -60,6 +60,26 @@
     -->
     <rule ref="Generic.Formatting.DisallowMultipleStatements" />
 
+    <!-- Ensures proper alignment for statements. In order to ensure the greatest consistency with
+         multiple coding styles and alignment techniques we set this to "1". This ensures that all
+         variable declarations with "=" and array assignment "=>" always have consistent spacing.
+
+         The issue with aligning multiple statements causes more pain then benefit.
+
+         1) Diffs are less consistent as adding/removing a line often requires adjusting aligned
+            lines making it more confusing.
+
+         2) Mixing grouped constants or grouped alignment is typically not consistent with non-grouped
+            items (which are more prevalent).
+
+         Therefore, ensure no alignment anywhere - constant "1" space.
+     -->
+    <rule ref="Generic.Formatting.MultipleStatementAlignment">
+        <properties>
+            <property name="maxPadding" value="1" />
+        </properties>
+    </rule>
+
     <!-- Requires a space after typecasting, e.g. `(int) "4"` -->
     <rule ref="Generic.Formatting.SpaceAfterCast" />
 
