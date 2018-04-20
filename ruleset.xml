@@ -83,8 +83,13 @@
     <!-- Requires a space after typecasting, e.g. `(int) "4"` -->
     <rule ref="Generic.Formatting.SpaceAfterCast" />
 
-    <!-- Checks the nesting level for methods. Default warning level = 5 -->
-    <rule ref="Generic.Metrics.NestingLevel" />
+    <!-- Checks the nesting level for methods. -->
+    <rule ref="Generic.Metrics.NestingLevel">
+        <properties>
+            <property name="nestingLevel" value="7" />
+            <property name="absoluteNestingLevel" value="10" />
+        </properties>
+    </rule>
 
     <!-- Requires camel-caps naming for functions -->
     <rule ref="Generic.NamingConventions.CamelCapsFunctionName">
