@@ -34,7 +34,7 @@
         (DO, ELSE, ELSEIF, FOR, FOREACH, IF, SWITCH, TRY) are not allowed to be empty even
         with a comment.
         -->
-        <exclude name="Generic.CodeAnalysis.EmptyStatement.DetectedCATCH" />
+        <exclude name="Generic.CodeAnalysis.EmptyStatement.DetectedCatch" />
     </rule>
 
     <!-- Detects the usage of one and the same incrementer into an outer and an inner
