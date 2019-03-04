@@ -160,8 +160,11 @@
         </properties>
     </rule>
 
-    <!-- Makes sure that any use of double quotes strings are warranted. -->
-    <rule ref="Squiz.Strings.DoubleQuoteUsage" />
+    <!-- Makes sure that any use of double quotes strings are warranted. Allow some interpolation and
+         thus we'll disable the ContainsVar. We want the NotRequired sniff and potentially future ones as well -->
+    <rule ref="Squiz.Strings.DoubleQuoteUsage">
+        <exclude name="Squiz.Strings.DoubleQuoteUsage.ContainsVar"/>
+    </rule>
 
     <!-- Forbids whitespace in typecasts:
         (int) $stringInt;   // good
