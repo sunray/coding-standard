@@ -10,6 +10,13 @@
     <!-- Referenced Sniffs: https://github.com/squizlabs/PHP_CodeSniffer/blob/master/src/Standards/PSR2/ruleset.xml -->
     <rule ref="PSR2" />
 
+    <rule ref="PSR2.Methods.FunctionCallSignature">
+        <!-- Prevent wrapping the closing ")" for multi-line function calls in weird locations. Let
+             prettier handle this -->
+        <exclude name="PSR2.Methods.FunctionCallSignature.SpaceBeforeCloseBracket"/>
+    </rule>
+
+
     <!-- The following sniffs are those that DO NOT exist in the base PSR2 set of sniffs -->
 
     <!--
